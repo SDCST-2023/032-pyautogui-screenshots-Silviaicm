@@ -12,4 +12,10 @@ while True:
     time.sleep(0.15)
     pyautogui.mouseUp()
     time.sleep(0.1)
-    
+    if  location == pyautogui.locateOnScreen('2a.png',confidence=0.9):
+        w,z=pyautogui.center(location)
+        pyautogui.doubleClick(w,z)
+        pyautogui.mouseDown(w,z)
+        time.sleep(0.15)
+        pyautogui.mouseUp()
+        time.sleep(0.1)
