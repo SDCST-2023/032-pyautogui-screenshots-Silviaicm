@@ -1,0 +1,5 @@
+fallos:
+
+cuando no hay mas de una flecha para ir derecha o izquierda da error en [-1]
+
+cuando mueve arriba abajo etc, luego cuando encuentra los cuadrados no los pincha

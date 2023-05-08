@@ -1,15 +1,22 @@
 #!python3
 import pyautogui
 import time
-import random
+import pyautogui as p
 
 pyautogui.confirm("run")
 
 while True:
+    money=pyautogui.locateOnScreen('3a.png',confidence=0.9)
     location2 = pyautogui.locateOnScreen('2a.png',confidence=0.9)
     location = pyautogui.locateOnScreen('1a.png',confidence=0.9)
+    if money!=None:
+        k,j=pyautogui.center(money)
+        pyautogui.doubleClick(k,j)
+        pyautogui.mouseDown(k,j)
+        time.sleep(0.15)
+        pyautogui.mouseUp()
+        time.sleep(0.1)
     if location2 != None:
-        print('found 2 block')
         w,z=pyautogui.center(location2)
         pyautogui.doubleClick(w,z)
         pyautogui.mouseDown(w,z)
@@ -17,7 +24,6 @@ while True:
         pyautogui.mouseUp()
         time.sleep(0.1)
     if location != None:
-        print('found 1 block')
         x,y=pyautogui.center(location)
         pyautogui.click(x,y)
         pyautogui.mouseDown(x,y)
@@ -28,25 +34,35 @@ while True:
         count=1
         while count<15:
             if count<4:
-                loc = pyautogui.locateOnScreen('1b.png',confidence=0.9)
-                e,r=pyautogui.center(loc)            
-                pyautogui.click(e,r)
-                pyautogui.mouseDown(e,r)
+                loc = p.locateAllOnScreen('2a.png',confidence=0.9)
+                e = list(loc)
+                if e!= []:
+                    start = p.position()
+                    p.moveTo(e[-1])
+                time.sleep(1)
+                pyautogui.click(e[-1])
+                pyautogui.mouseDown(e[-1])
                 time.sleep(0.25)
                 pyautogui.mouseUp()
                 count=count+1
             if 3<count<8:
                 up = pyautogui.locateOnScreen('3a.png',confidence=0.9)
-                u,p=pyautogui.center(up)
-                pyautogui.click(u,p)
-                pyautogui.mouseDown(u,p)
+                c,i=pyautogui.center(up)
+                pyautogui.click(c,i)
+                pyautogui.mouseDown(c,i)
                 time.sleep(0.25)
                 pyautogui.mouseUp()
+                pyautogui.moveTo(2,2)
+                count=count+1
             if 7<count<12:
-                lac = pyautogui.locateOnScreen('2b.png',confidence=0.9)
-                l,m=pyautogui.center(lac)
-                pyautogui.click(l,m)
-                pyautogui.mouseDown(l,m)
+                lac = p.locateAllOnScreen('2b.png',confidence=0.9)
+                r = list(lac)
+                if r != []:
+                    start = p.position()
+                    p.moveTo(r[-1])
+                time.sleep(1)
+                pyautogui.click(r[-1])
+                pyautogui.mouseDown(r[-1])
                 time.sleep(0.25)
                 pyautogui.mouseUp()
                 count=count+1
@@ -57,4 +73,5 @@ while True:
                 pyautogui.mouseDown(d,o)
                 time.sleep(0.25)
                 pyautogui.mouseUp()
+                count=count+1
             print(count)
