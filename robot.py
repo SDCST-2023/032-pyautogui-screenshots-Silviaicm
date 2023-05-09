@@ -74,4 +74,6 @@ while True:
                 time.sleep(0.25)
                 pyautogui.mouseUp()
                 count=count+1
+            elif location!=None or location2!=None:
+                break
             print(count)
